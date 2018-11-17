@@ -18,6 +18,16 @@ module.exports = class extends Generator {
           'yarn'
         ],
         default: 0
+      },
+      {
+        type: 'list',
+        name: 'projectType',
+        message: '请选择你的项目类型',
+        choices: [
+          'react',
+          'vue'
+        ],
+        default: 0
       }
     ]).then(config => {
       console.log(config)
