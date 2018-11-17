@@ -29,8 +29,18 @@ module.exports = class extends Generator {
         ],
         default: 0
       }
-    ]).then(config => {
-      console.log(config)
+    ]).then(res => {
+      this.renderOptions = res
     })
+  }
+
+  writing() {
+    this.fs.copyTpl(
+      this.templatePath(this.renderOptions.projectType),
+      this.destinationPath(),
+      {
+        title: 'Peak created project'
+      }
+    )
   }
 }
