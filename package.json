@@ -1,0 +1,13 @@
+{
+  "name": "generator-peak",
+  "version": "0.1.0",
+  "main": "index.js",
+  "keywords": [
+    "yeoman-generator",
+    "generator-peak"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "yeoman-generator": "^3.1.1"
+  }
+}
