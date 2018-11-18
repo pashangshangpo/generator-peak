@@ -4,7 +4,8 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node ./config/webpack.config.prod.js"
+    "start": "peak server",
+    "build": "peak build"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
@@ -14,6 +15,7 @@
     "css-hot-loader": "^1.4.2",
     "css-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "peak": "https://github.com/pashangshangpo/peak.git",
     "url-loader": "^1.1.2",
     "webpack": "^4.25.1",
     "webpack-merge": "^4.1.4"
