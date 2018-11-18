@@ -4,8 +4,8 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "peak server",
-    "build": "peak build"
+    "start": "peak --type server --env local",
+    "build": "peak --type build --env prod"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
