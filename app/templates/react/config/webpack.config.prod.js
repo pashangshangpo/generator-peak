@@ -44,11 +44,18 @@ let webpackConfig = merge(common, {
 })
 
 webpack(webpackConfig, (err, stats) => {
-  process.stdout.write(stats.toString({
-    colors: true,
-    modules: false,
-    children: false,
-    chunks: false,
-    chunkModules: false
-  }) + '\n\n')
+  if (err) {
+    process.exit(0)
+  }
+  else {
+    let assets = stats.compilation.assets
+    let template = require('fs').readFileSync(resolve('public/index.html')).toString()
+    let replaceHTML = ''
+
+    Object.keys(assets).forEach(key => {
+      replaceHTML += `\n  <script src="${key}"></script>`
+    })
+
+    require('fs').writeFileSync(resolve('build/index.html'), template.replace('<!-- inject script -->', replaceHTML))
+  }
 })
