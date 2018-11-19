@@ -5,10 +5,13 @@ const resolve = pathName => {
 }
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js'
+  },
   output: {
     path: resolve('build'),
-    filename: '[contenthash].js'
+    filename: '[name].js',
+    publicPath: ''
   },
   resolve: {
     extensions: ['.js'],

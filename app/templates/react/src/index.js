@@ -1,1 +1,1 @@
-document.write('Hello World')
+import './style/index.css'

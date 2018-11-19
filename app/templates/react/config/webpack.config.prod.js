@@ -10,7 +10,7 @@ const resolve = pathName => {
   return path.resolve('.', pathName)
 }
 
-let webpackConfig = merge(common, {
+module.exports = merge(common, {
   mode: 'production',
   module: {
     rules: [
@@ -41,21 +41,4 @@ let webpackConfig = merge(common, {
     }),
     new ExtractTextPlugin('style/index.css')
   ]
-})
-
-webpack(webpackConfig, (err, stats) => {
-  if (err) {
-    process.exit(0)
-  }
-  else {
-    let assets = stats.compilation.assets
-    let template = require('fs').readFileSync(resolve('public/index.html')).toString()
-    let replaceHTML = ''
-
-    Object.keys(assets).forEach(key => {
-      replaceHTML += `\n  <script src="${key}"></script>`
-    })
-
-    require('fs').writeFileSync(resolve('build/index.html'), template.replace('<!-- inject script -->', replaceHTML))
-  }
 })
