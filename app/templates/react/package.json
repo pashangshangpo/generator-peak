@@ -5,20 +5,36 @@
   "license": "MIT",
   "scripts": {
     "start": "peak --type server --env local",
-    "build": "peak --type build --env prod"
+    "build": "peak --type build --env prod",
+    "format": "pretty-quick --staged"
   },
+  "pre-commit": [
+    "format"
+  ],
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
+    "autoprefixer": "^9.3.1",
     "babel-loader": "^8.0.0-beta.6",
     "css-hot-loader": "^1.4.2",
     "css-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "node-sass": "^4.10.0",
     "peak": "https://github.com/pashangshangpo/peak.git",
+    "postcss": "^7.0.6",
+    "postcss-loader": "^3.0.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.14.3",
+    "pretty-quick": "^1.8.0",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.25.1",
     "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
   }
 }

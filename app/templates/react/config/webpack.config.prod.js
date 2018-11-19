@@ -21,13 +21,24 @@ module.exports = merge(common, {
         ],
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1
-              }
-            }
+          use: [ 
+            {loader: 'css-loader',options: {importLoaders: 2}},
+            {loader: 'postcss-loader',options:{ident:"postcss",plugins:[require("autoprefixer")("last 100 versions")]}},
+            'sass-loader'
+          ]
+        })
+      },
+      {
+        test: /\.scss$/,
+        include: [
+          resolve('src')
+        ],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [ 
+            {loader: 'css-loader',options: {importLoaders: 2}},
+            {loader: 'postcss-loader',options:{ident:"postcss",plugins:[require("autoprefixer")("last 100 versions")]}},
+            'sass-loader'
           ]
         })
       }
