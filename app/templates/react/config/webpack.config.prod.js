@@ -19,17 +19,7 @@ module.exports = merge(common, {
         include: [
           resolve('src')
         ],
-        use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 1
-              }
-            }
-          ]
-        }))
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
