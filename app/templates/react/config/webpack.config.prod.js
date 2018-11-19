@@ -19,7 +19,17 @@ module.exports = merge(common, {
         include: [
           resolve('src')
         ],
-        use: ['style-loader', 'css-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1
+              }
+            }
+          ]
+        })
       }
     ]
   },
