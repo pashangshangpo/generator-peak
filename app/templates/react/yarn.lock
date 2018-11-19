@@ -2589,7 +2589,7 @@ pbkdf2@^3.0.3:
 
 "peak@https://github.com/pashangshangpo/peak.git":
   version "0.0.1"
-  resolved "https://github.com/pashangshangpo/peak.git#60867e2ad10933a1215e88bd4816e3077cd1510e"
+  resolved "https://github.com/pashangshangpo/peak.git#1e30915331cd9327dcead95441443f075b9354ab"
   dependencies:
     commander "^2.19.0"
     express "^4.16.4"
