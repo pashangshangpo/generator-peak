@@ -40,6 +40,12 @@ module.exports = class extends Generator {
       this.destinationPath(),
       {
         title: 'Peak created project'
+      },
+      {},
+      {
+        globOptions: {
+          dot: true
+        }
       }
     )
   }
