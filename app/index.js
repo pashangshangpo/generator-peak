@@ -49,4 +49,14 @@ module.exports = class extends Generator {
       }
     )
   }
+
+  install() {
+    let packageManage = this.renderOptions.packageManage
+
+    this.installDependencies({
+      bower: false,
+      npm: packageManage === 'npm',
+      yarn: packageManage === 'yarn'
+    })
+  }
 }
