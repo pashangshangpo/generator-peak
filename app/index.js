@@ -59,4 +59,10 @@ module.exports = class extends Generator {
       yarn: packageManage === 'yarn'
     })
   }
+
+  end() {
+    let packageManage = this.renderOptions.packageManage
+
+    console.log(`${packageManage} start`)
+  }
 }
