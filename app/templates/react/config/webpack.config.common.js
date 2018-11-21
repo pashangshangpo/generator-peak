@@ -21,7 +21,8 @@ module.exports = {
       '$components': resolve('src/components'),
       '$store': resolve('src/store'),
       '$router': resolve('src/router'),
-      '$style': resolve('src/style')
+      '$style': resolve('src/style'),
+      '$svg': resolve('src/svg')
     }
   },
   module: {
@@ -49,6 +50,13 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.svg/,
+        include: [
+          resolve('src')
+        ],
+        use: ['svg-sprite-loader']
       }
     ]
   },
