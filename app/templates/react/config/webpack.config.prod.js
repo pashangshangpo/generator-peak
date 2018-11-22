@@ -50,11 +50,24 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
+    new webpack.HashedModuleIdsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': "'production'"
       }
     }),
-    new ExtractTextPlugin('style/index.css')
-  ]
+    new ExtractTextPlugin('style/index.css'),
+  ],
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  }
 })
