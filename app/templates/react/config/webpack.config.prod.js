@@ -9,6 +9,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const common = require('./webpack.config.common')
 
@@ -16,10 +17,13 @@ const resolve = (...arg) => {
   return path.resolve('.', ...arg)
 }
 
+const BuildPath = resolve('build')
+const PublicPath = require(resolve('peak.config')).publicPath
+
 module.exports = merge(common, {
   mode: 'production',
   output: {
-    path: resolve('build'),
+    path: BuildPath,
     filename: '[name].[contenthash].js',
     publicPath: '/'
   },
@@ -107,5 +111,12 @@ module.exports = merge(common, {
       }
     }),
     new ExtractTextPlugin('style/index.css'),
+    PublicPath && new CopyWebpackPlugin([
+      {
+        from: resolve(PublicPath),
+        to: BuildPath,
+        ignore: ['.*']
+      }
+    ])
   ]
 })
