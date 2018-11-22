@@ -6,8 +6,8 @@
 
 const path = require('path')
 
-const resolve = pathName => {
-  return path.resolve('.', pathName)
+const resolve = (...arg) => {
+  return path.resolve('.', ...arg)
 }
 
 module.exports = {
