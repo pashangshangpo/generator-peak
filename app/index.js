@@ -31,13 +31,15 @@ module.exports = class extends Generator {
       }
     ]).then(res => {
       this.renderOptions = res
+
+      this.destinationRoot(this.destinationPath(this.renderOptions.name))
     })
   }
 
   writing() {
     this.fs.copyTpl(
       this.templatePath(this.renderOptions.projectType),
-      this.destinationPath(this.renderOptions.name),
+      this.destinationPath(),
       {
         title: 'Peak created project'
       },
