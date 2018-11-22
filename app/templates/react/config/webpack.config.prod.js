@@ -18,6 +18,18 @@ module.exports = merge(common, {
     filename: '[name].[contenthash].js',
     publicPath: '/'
   },
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  },
   module: {
     rules: [
       {
@@ -64,17 +76,5 @@ module.exports = merge(common, {
       }
     }),
     new ExtractTextPlugin('style/index.css'),
-  ],
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
-        }
-      }
-    }
-  }
+  ]
 })
