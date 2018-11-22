@@ -12,6 +12,11 @@ const resolve = (...arg) => {
 
 module.exports = merge(common, {
   mode: 'production',
+  output: {
+    path: resolve('build'),
+    filename: '[name].[contenthash].js',
+    publicPath: '/'
+  },
   module: {
     rules: [
       {
