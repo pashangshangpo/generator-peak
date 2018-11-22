@@ -106,7 +106,10 @@ module.exports = merge(common, {
         'NODE_ENV': "'production'"
       }
     }),
-    new ExtractTextPlugin('style/index.css'),
+    new ExtractTextPlugin({
+      filename: 'style/[hash].css',
+      allChunks: true
+    }),
     PublicPath && new CopyWebpackPlugin([
       {
         from: resolve(PublicPath.replace('/', '')),
