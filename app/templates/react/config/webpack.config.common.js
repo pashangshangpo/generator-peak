@@ -35,6 +35,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
         use: [
           'babel-loader'
         ]
@@ -44,6 +45,7 @@ module.exports = {
         include: [
           resolve('src')
         ],
+        exclude: /(node_modules|bower_components)/,
         use: [
           {
             loader: 'url-loader',
@@ -59,6 +61,7 @@ module.exports = {
         include: [
           resolve('src')
         ],
+        exclude: /(node_modules|bower_components)/,
         use: ['svg-sprite-loader']
       }
     ]
