@@ -43,9 +43,6 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
-        include: [
-          resolve('src')
-        ],
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -70,9 +67,6 @@ module.exports = merge(common, {
       },
       {
         test: /\.scss$/,
-        include: [
-          resolve('src')
-        ],
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [

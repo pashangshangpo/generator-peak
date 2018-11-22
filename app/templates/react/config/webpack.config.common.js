@@ -35,9 +35,6 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        include: [
-          resolve('src')
-        ],
         use: [
           'babel-loader'
         ]

@@ -15,9 +15,6 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
-        include: [
-          resolve('src')
-        ],
         use: [
           'style-loader',
           {
@@ -40,9 +37,6 @@ module.exports = merge(common, {
       },
       {
         test: /\.scss$/,
-        include: [
-          resolve('src')
-        ],
         use: [
           'style-loader',
           {
