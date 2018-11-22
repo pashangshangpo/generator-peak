@@ -37,7 +37,7 @@ module.exports = class extends Generator {
   writing() {
     this.fs.copyTpl(
       this.templatePath(this.renderOptions.projectType),
-      this.destinationPath(),
+      this.destinationPath(this.renderOptions.name),
       {
         title: 'Peak created project'
       },
