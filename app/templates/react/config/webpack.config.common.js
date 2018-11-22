@@ -1,3 +1,9 @@
+/**
+ * @file webpack common config
+ * @author xiaozhihua
+ * @date 2018-11-22 16:52:48
+ */
+
 const path = require('path')
 
 const resolve = pathName => {

@@ -1,3 +1,8 @@
+/**
+ * @file webpack dev config
+ * @author xiaozhihua
+ * @date 2018-11-22 16:51:22
+ */
 
 const webpack = require('webpack')
 const merge = require('webpack-merge')

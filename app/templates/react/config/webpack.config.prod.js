@@ -1,3 +1,8 @@
+/**
+ * @file webpack prod config
+ * @author xiaozhihua
+ * @date 2018-11-22 16:52:10
+ */
 
 const path = require('path')
 const webpack = require('webpack')
