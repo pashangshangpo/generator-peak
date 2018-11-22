@@ -6,8 +6,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const common = require('./webpack.config.common')
 
-const resolve = pathName => {
-  return path.resolve('.', pathName)
+const resolve = (...arg) => {
+  return path.resolve('.', ...arg)
 }
 
 module.exports = merge(common, {
