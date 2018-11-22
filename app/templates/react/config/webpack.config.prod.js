@@ -109,8 +109,8 @@ module.exports = merge(common, {
     new ExtractTextPlugin('style/index.css'),
     PublicPath && new CopyWebpackPlugin([
       {
-        from: resolve(PublicPath),
-        to: BuildPath,
+        from: resolve(PublicPath.replace('/', '')),
+        to: path.join(BuildPath, PublicPath),
         ignore: ['.*']
       }
     ])
