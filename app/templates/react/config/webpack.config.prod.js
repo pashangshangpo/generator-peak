@@ -44,9 +44,22 @@ module.exports = merge(common, {
         ],
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [ 
-            {loader: 'css-loader',options: {importLoaders: 2}},
-            {loader: 'postcss-loader',options:{ident:"postcss",plugins:[require("autoprefixer")("last 100 versions")]}},
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                plugins: [
+                  require('autoprefixer')('last 100 versions')
+                ]
+              }
+            },
             'sass-loader'
           ]
         })
@@ -58,9 +71,22 @@ module.exports = merge(common, {
         ],
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [ 
-            {loader: 'css-loader',options: {importLoaders: 2}},
-            {loader: 'postcss-loader',options:{ident:"postcss",plugins:[require("autoprefixer")("last 100 versions")]}},
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                plugins: [
+                  require('autoprefixer')('last 100 versions')
+                ]
+              }
+            },
             'sass-loader'
           ]
         })

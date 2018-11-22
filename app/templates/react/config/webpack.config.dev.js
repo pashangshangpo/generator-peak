@@ -18,10 +18,23 @@ module.exports = merge(common, {
         include: [
           resolve('src')
         ],
-        use: [ 
+        use: [
           'style-loader',
-          {loader: 'css-loader',options: {importLoaders: 2}},
-          {loader: 'postcss-loader',options:{ident:"postcss",plugins:[require("autoprefixer")("last 100 versions")]}},
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                require('autoprefixer')('last 100 versions')
+              ]
+            }
+          },
           'sass-loader'
         ]
       },
@@ -30,10 +43,23 @@ module.exports = merge(common, {
         include: [
           resolve('src')
         ],
-        use: [ 
+        use: [
           'style-loader',
-          {loader: 'css-loader',options: {importLoaders: 2}},
-          {loader: 'postcss-loader',options:{ident:"postcss",plugins:[require("autoprefixer")("last 100 versions")]}},
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                require('autoprefixer')('last 100 versions')
+              ]
+            }
+          },
           'sass-loader'
         ]
       }
