@@ -63,8 +63,8 @@ module.exports = class extends Generator {
   }
 
   end() {
-    let packageManage = this.renderOptions.packageManage
+    let { name, packageManage} = this.renderOptions
 
-    console.log(`${packageManage} start`)
+    console.log(`cd ${name} && ${packageManage} start`)
   }
 }
