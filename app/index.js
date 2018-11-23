@@ -56,7 +56,7 @@ module.exports = class extends Generator {
 
   writing() {
     let name = `peak-${this.renderOptions.projectType}-template`
-    let templatePath = ResolveApp('template', name)
+    let templatePath = ResolveApp('templates', name)
 
     return new Promise(resolve => {
       if (ifThereIsPath(templatePath)) {
