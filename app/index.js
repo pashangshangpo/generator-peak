@@ -1,4 +1,22 @@
 const Generator = require('yeoman-generator')
+const Shell = require('shelljs')
+const Path = require('path')
+const Fs = require('fs')
+
+const ifThereIsPath = path =>{
+  try {
+    Fs.readdirSync(path)
+
+    return true
+  }
+  catch (err) {
+    return false
+  }
+}
+
+const ResolveApp = (...arg) => {
+  return Path.join(__dirname, ...arg)
+}
 
 module.exports = class extends Generator {
   prompting() {
@@ -37,19 +55,43 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copyTpl(
-      this.templatePath(this.renderOptions.projectType),
-      this.destinationPath(),
-      {
-        title: 'Peak created project'
-      },
-      {},
-      {
-        globOptions: {
-          dot: true
-        }
+    let name = `peak-${this.renderOptions.projectType}-template`
+    let templatePath = ResolveApp('template', name)
+
+    return new Promise(resolve => {
+      if (ifThereIsPath(templatePath)) {
+        Shell.rm(
+          'rf',
+          templatePath,
+          {
+            silent: true
+          }
+        )
       }
-    )
+
+      Shell.exec(
+        `git clone https://github.com/pashangshangpo/${name}.git ${templatePath}`,
+        {
+          silent: true
+        }
+      )
+
+      this.fs.copyTpl(
+        this.templatePath(name),
+        this.destinationPath(),
+        {
+          title: 'Peak created project'
+        },
+        {},
+        {
+          globOptions: {
+            dot: true
+          }
+        }
+      )
+
+      resolve()
+    })
   }
 
   install() {
