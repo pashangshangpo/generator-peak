@@ -20,11 +20,11 @@ const GetAllRepo = () => {
   })
 }
 
-const GetAllTemplate = repos => {
+const GetAllTemplate = (repos, reg) => {
   return repos.filter(repo => {
-    return /peak-(.*)-template/.test(repo.name)
+    return reg.exec(repo.name)
   })
-  .map(repo => repo.name)
+  .map(repo => reg.exec(repo.name)[1])
 }
 
 const ifThereIsPath = path =>{
@@ -44,37 +44,36 @@ const ResolveApp = (...arg) => {
 
 module.exports = class extends Generator {
   prompting() {
-    return this.prompt([
-      {
-        type: 'input',
-        name: 'name',
-        message: '请输入项目名',
-        default: this.appname.split(' ').join('-')
-      },
-      {
-        type: 'list',
-        name: 'packageManage',
-        message: '请选择你的包管理器',
-        choices: [
-          'npm',
-          'yarn'
-        ],
-        default: 0
-      },
-      {
-        type: 'list',
-        name: 'projectType',
-        message: '请选择你的项目类型',
-        choices: [
-          'react',
-          'vue'
-        ],
-        default: 0
-      }
-    ]).then(res => {
-      this.renderOptions = res
-
-      this.destinationRoot(this.destinationPath(this.renderOptions.name))
+    return GetAllRepo().then(res => {
+      return this.prompt([
+        {
+          type: 'input',
+          name: 'name',
+          message: '请输入项目名',
+          default: this.appname.split(' ').join('-')
+        },
+        {
+          type: 'list',
+          name: 'packageManage',
+          message: '请选择你的包管理器',
+          choices: [
+            'npm',
+            'yarn'
+          ],
+          default: 0
+        },
+        {
+          type: 'list',
+          name: 'projectType',
+          message: '请选择你的项目类型',
+          choices: GetAllTemplate(res, /^peak-(.*)-template$/),
+          default: 0
+        }
+      ]).then(res => {
+        this.renderOptions = res
+  
+        this.destinationRoot(this.destinationPath(this.renderOptions.name))
+      })
     })
   }
 
