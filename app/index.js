@@ -44,6 +44,8 @@ const ResolveApp = (...arg) => {
 
 module.exports = class extends Generator {
   prompting() {
+    console.log('正在获取可用模板列表，此过程可能比较缓慢...')
+
     return GetAllRepo().then(res => {
       return this.prompt([
         {
