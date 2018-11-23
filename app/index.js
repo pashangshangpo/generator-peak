@@ -85,7 +85,10 @@ module.exports = class extends Generator {
         {},
         {
           globOptions: {
-            dot: true
+            dot: true,
+            ignore: [
+              '**/.git/**'
+            ]
           }
         }
       )
