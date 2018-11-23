@@ -2,6 +2,30 @@ const Generator = require('yeoman-generator')
 const Shell = require('shelljs')
 const Path = require('path')
 const Fs = require('fs')
+const Request = require('request')
+
+const GetAllRepo = () => {
+  return new Promise(resolve => {
+    Request(
+      {
+        url: 'https://api.github.com/users/pashangshangpo/repos',
+        headers: {
+          'User-Agent': 'peak'
+        }
+      },
+      (req, res) => {
+        resolve(JSON.parse(res.body))
+      }
+    )
+  })
+}
+
+const GetAllTemplate = repos => {
+  return repos.filter(repo => {
+    return /peak-(.*)-template/.test(repo.name)
+  })
+  .map(repo => repo.name)
+}
 
 const ifThereIsPath = path =>{
   try {
