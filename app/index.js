@@ -61,7 +61,7 @@ module.exports = class extends Generator {
     return new Promise(resolve => {
       if (ifThereIsPath(templatePath)) {
         Shell.rm(
-          'rf',
+          '-rf',
           templatePath,
           {
             silent: true
